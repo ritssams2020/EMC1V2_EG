@@ -1,0 +1,24 @@
+***********************************************************;
+*  Activity 2.04                                          *;
+*  1) Notice that the program includes two TITLE          *;
+*     statements, each referencing a macro variable.      *;
+*  2) At the top of the program, turn on the SYMBOLGEN    *;
+*     option. At the bottom of the program, turn off      *;
+*     SYMBOLGEN.                                          *;
+*  3) Run the program and review the log and results.     *;
+*     What is printed as the second title?                *;
+*  4) In the TITLE2 statement, change the single          *;
+*     quotation marks to double quotation marks and run   *;
+*     the program again. How do the results and the log   *;
+*     differ?                                             *;
+***********************************************************;
+
+%let type=Truck;
+%let hp=250;
+title1 "Car Type: &type";
+title2 'Horsepower > &hp';
+proc print data=sashelp.cars;
+    var Make Model MSRP Horsepower;
+    where Type="&type" and Horsepower>&hp;
+run;
+title;
